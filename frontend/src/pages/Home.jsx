@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaUtensils, FaCalendarAlt, FaShoppingBag, FaBeer, FaFire, FaClock } from 'react-icons/fa';
+import { FaUtensils, FaCalendarAlt, FaShoppingBag, FaBeer, FaFire, FaClock, FaEnvelope } from 'react-icons/fa';
 import SectionHeading from '../components/ui/SectionHeading';
+import { FEATURES } from '../config/features';
 
 const HOURS = [
   { day: 'Monday - Thursday', time: '4:00 PM - 10:00 PM' },
@@ -12,7 +13,7 @@ const HOURS = [
 const HIGHLIGHTS = [
   { icon: FaFire, title: 'Slow-Smoked BBQ', desc: '14-hour brisket, fall-off-the-bone ribs, all smoked in-house daily.' },
   { icon: FaBeer, title: 'Craft Beer on Tap', desc: 'Rotating local drafts alongside our house-brewed lager and amber ale.' },
-  { icon: FaUtensils, title: 'Gastropub Atmosphere', desc: 'Exposed stone, warm string lighting, black metal accents — rustic meets upscale.' },
+  { icon: FaUtensils, title: 'Warm Atmosphere', desc: 'Exposed stone, warm string lighting, black metal accents — rustic meets upscale.' },
 ];
 
 export default function Home() {
@@ -31,9 +32,6 @@ export default function Home() {
           }}
         />
         <div className="relative z-10 mx-auto max-w-5xl px-4 text-center md:px-8">
-          <p className="mb-4 inline-block rounded-full border border-olive-400/40 bg-olive-400/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-olive-300">
-            Modern-Rustic Gastropub
-          </p>
           <h1 className="font-display text-5xl leading-tight sm:text-6xl md:text-7xl lg:text-8xl">
             <span className="text-olive-400">THE HOUSE OF</span>
             <br />
@@ -45,12 +43,16 @@ export default function Home() {
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link to="/order" className="btn-primary w-full sm:w-auto">
-              <FaShoppingBag /> Order Online
-            </Link>
-            <Link to="/reservations" className="btn-secondary w-full sm:w-auto">
-              <FaCalendarAlt /> Reserve a Table
-            </Link>
+            {FEATURES.orderOnline && (
+              <Link to="/order" className="btn-primary w-full sm:w-auto">
+                <FaShoppingBag /> Order Online
+              </Link>
+            )}
+            {FEATURES.reservations && (
+              <Link to="/reservations" className="btn-secondary w-full sm:w-auto">
+                <FaCalendarAlt /> Reserve a Table
+              </Link>
+            )}
             <Link to="/menu" className="btn-outline w-full sm:w-auto">
               <FaUtensils /> View Menu
             </Link>
@@ -101,11 +103,19 @@ export default function Home() {
               Ready for the <span className="text-ember-500">full smoke experience?</span>
             </h3>
             <p className="mb-6 text-stone-300">
-              Book a table for your next gathering or order our BBQ straight to your door.
+              {FEATURES.reservations || FEATURES.orderOnline
+                ? 'Book a table for your next gathering or order our BBQ straight to your door.'
+                : 'Check out the full menu, or stop by and see us in person.'}
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link to="/reservations" className="btn-primary">Reserve a Table</Link>
-              <Link to="/order" className="btn-secondary">Order Online</Link>
+              {FEATURES.reservations && <Link to="/reservations" className="btn-primary">Reserve a Table</Link>}
+              {FEATURES.orderOnline && <Link to="/order" className="btn-secondary">Order Online</Link>}
+              {!FEATURES.reservations && !FEATURES.orderOnline && (
+                <>
+                  <Link to="/menu" className="btn-primary">View Menu</Link>
+                  <Link to="/contact" className="btn-secondary"><FaEnvelope /> Contact Us</Link>
+                </>
+              )}
             </div>
           </div>
         </div>

@@ -3,13 +3,14 @@ import { NavLink, Link } from 'react-router-dom';
 import { FaBars, FaTimes, FaBeer } from 'react-icons/fa';
 import { useCart } from '../../context/CartContext';
 import Logo from './Logo';
+import { FEATURES } from '../../config/features';
 
 const NAV_LINKS = [
   { to: '/', label: 'Home' },
   { to: '/menu', label: 'Menu' },
   { to: '/about', label: 'About' },
   { to: '/gallery', label: 'Gallery' },
-  { to: '/reservations', label: 'Reservations' },
+  ...(FEATURES.reservations ? [{ to: '/reservations', label: 'Reservations' }] : []),
   { to: '/contact', label: 'Contact' },
 ];
 
@@ -53,19 +54,25 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
-          <Link to="/order" className="relative btn-outline !px-4 !py-2 text-sm">
-            Order Online
-            {count > 0 && (
-              <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-ember-500 text-xs font-bold text-white">
-                {count}
-              </span>
+        {(FEATURES.orderOnline || FEATURES.reservations) && (
+          <div className="hidden items-center gap-3 lg:flex">
+            {FEATURES.orderOnline && (
+              <Link to="/order" className="relative btn-outline !px-4 !py-2 text-sm">
+                Order Online
+                {count > 0 && (
+                  <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-ember-500 text-xs font-bold text-white">
+                    {count}
+                  </span>
+                )}
+              </Link>
             )}
-          </Link>
-          <Link to="/reservations" className="btn-primary !px-4 !py-2 text-sm">
-            Reserve a Table
-          </Link>
-        </div>
+            {FEATURES.reservations && (
+              <Link to="/reservations" className="btn-primary !px-4 !py-2 text-sm">
+                Reserve a Table
+              </Link>
+            )}
+          </div>
+        )}
 
         <button
           className="text-2xl text-stone-100 lg:hidden"
@@ -84,14 +91,20 @@ export default function Header() {
                 {link.label}
               </NavLink>
             ))}
-            <div className="mt-2 flex flex-col gap-3">
-              <Link to="/order" className="btn-outline" onClick={() => setOpen(false)}>
-                Order Online {count > 0 && `(${count})`}
-              </Link>
-              <Link to="/reservations" className="btn-primary" onClick={() => setOpen(false)}>
-                Reserve a Table
-              </Link>
-            </div>
+            {(FEATURES.orderOnline || FEATURES.reservations) && (
+              <div className="mt-2 flex flex-col gap-3">
+                {FEATURES.orderOnline && (
+                  <Link to="/order" className="btn-outline" onClick={() => setOpen(false)}>
+                    Order Online {count > 0 && `(${count})`}
+                  </Link>
+                )}
+                {FEATURES.reservations && (
+                  <Link to="/reservations" className="btn-primary" onClick={() => setOpen(false)}>
+                    Reserve a Table
+                  </Link>
+                )}
+              </div>
+            )}
           </nav>
         </div>
       )}

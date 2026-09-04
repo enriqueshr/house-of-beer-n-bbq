@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaFacebook, FaInstagram, FaTiktok, FaBeer, FaPhone, FaClock } from 'react-icons/fa';
 import Logo from './Logo';
 import { BUSINESS } from '../../config/business';
+import { FEATURES } from '../../config/features';
 
 export default function Footer() {
   return (
@@ -17,7 +18,7 @@ export default function Footer() {
             </span>
           </div>
           <p className="text-sm text-stone-300">
-            Modern-rustic gastropub serving slow-smoked BBQ and craft beer in a warm, welcoming space.
+            Slow-smoked BBQ and craft beer in a warm, welcoming space.
           </p>
         </div>
 
@@ -25,8 +26,12 @@ export default function Footer() {
           <h4 className="mb-4 font-display text-lg text-stone-50">Quick Links</h4>
           <ul className="space-y-2 text-sm text-stone-300">
             <li><Link to="/menu" className="hover:text-olive-400">Menu</Link></li>
-            <li><Link to="/reservations" className="hover:text-olive-400">Reservations</Link></li>
-            <li><Link to="/order" className="hover:text-olive-400">Order Online</Link></li>
+            {FEATURES.reservations && (
+              <li><Link to="/reservations" className="hover:text-olive-400">Reservations</Link></li>
+            )}
+            {FEATURES.orderOnline && (
+              <li><Link to="/order" className="hover:text-olive-400">Order Online</Link></li>
+            )}
             <li><Link to="/about" className="hover:text-olive-400">About Us</Link></li>
             <li><Link to="/gallery" className="hover:text-olive-400">Gallery</Link></li>
           </ul>
