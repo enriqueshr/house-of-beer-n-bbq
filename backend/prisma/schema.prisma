@@ -1,0 +1,119 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum MenuCategory {
+  APPETIZERS
+  BBQ_MAINS
+  BEER_DRINKS
+  SIDES
+  DESSERTS
+}
+
+enum ReservationStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+enum OrderType {
+  PICKUP
+  DELIVERY
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PREPARING
+  READY
+  COMPLETED
+  CANCELLED
+}
+
+model MenuItem {
+  id          String       @id @default(uuid())
+  name        String
+  description String
+  price       Decimal      @db.Decimal(10, 2)
+  category    MenuCategory
+  imageUrl    String?
+  isAvailable Boolean      @default(true)
+  sortOrder   Int          @default(0)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  @@index([category])
+}
+
+model Reservation {
+  id               String            @id @default(uuid())
+  name             String
+  phone            String
+  email            String
+  date             DateTime
+  time             String
+  partySize        Int
+  specialRequests  String?
+  status           ReservationStatus @default(PENDING)
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+
+  @@index([date])
+  @@index([status])
+}
+
+model ContactSubmission {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  phone     String?
+  subject   String?
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([isRead])
+}
+
+model Order {
+  id              String      @id @default(uuid())
+  customerName    String
+  phone           String
+  email           String
+  orderType       OrderType   @default(PICKUP)
+  address         String?
+  notes           String?
+  items           OrderItem[]
+  total           Decimal     @db.Decimal(10, 2)
+  status          OrderStatus @default(PENDING)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  @@index([status])
+}
+
+model OrderItem {
+  id         String   @id @default(uuid())
+  order      Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId    String
+  menuItemId String
+  name       String
+  price      Decimal  @db.Decimal(10, 2)
+  quantity   Int
+
+  @@index([orderId])
+}
+
+model AdminUser {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  createdAt    DateTime @default(now())
+}

@@ -1,0 +1,71 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html', './src/**/*.{js,jsx}'],
+  theme: {
+    extend: {
+      colors: {
+        charcoal: {
+          50: '#f5f4f3',
+          100: '#e6e4e1',
+          200: '#c9c4bd',
+          300: '#a39c91',
+          400: '#7a7268',
+          500: '#5a5349',
+          600: '#423d36',
+          700: '#332f2a',
+          800: '#252220',
+          900: '#1a1816',
+          950: '#0f0d0c',
+        },
+        stone: {
+          50: '#faf7f2',
+          100: '#f0e9dc',
+          200: '#e0d2b8',
+          300: '#cdb68f',
+          400: '#b89968',
+          500: '#a4824f',
+          600: '#8a6a3f',
+          700: '#6f5433',
+          800: '#5a4429',
+          900: '#493823',
+        },
+        olive: {
+          50: '#f5f8e8',
+          100: '#e7efc6',
+          200: '#d0df94',
+          300: '#b2c95e',
+          400: '#98b73a',
+          500: '#7c9a2b',
+          600: '#617822',
+          700: '#4a5c1c',
+          800: '#3d4a1c',
+          900: '#333d1c',
+        },
+        ember: {
+          50: '#fef4ec',
+          100: '#fce4cc',
+          200: '#f9c495',
+          300: '#f5a05e',
+          400: '#ef7f35',
+          500: '#e2621c',
+          600: '#c34a15',
+          700: '#9d3815',
+          800: '#7f2f17',
+          900: '#682916',
+        },
+      },
+      fontFamily: {
+        display: ['"Bebas Neue"', '"Oswald"', 'sans-serif'],
+        body: ['"Inter"', 'system-ui', 'sans-serif'],
+      },
+      boxShadow: {
+        glow: '0 0 40px rgba(226, 98, 28, 0.25)',
+        'glow-olive': '0 0 30px rgba(152, 183, 58, 0.2)',
+      },
+      backgroundImage: {
+        'warm-radial': 'radial-gradient(circle at 50% 0%, rgba(226,98,28,0.15), transparent 60%)',
+      },
+    },
+  },
+  plugins: [],
+};
