@@ -2,6 +2,27 @@ import React from 'react';
 import { FaFire, FaBeer, FaUsers } from 'react-icons/fa';
 import SectionHeading from '../components/ui/SectionHeading';
 
+const VIBE_SECTIONS = [
+  {
+    icon: FaFire,
+    title: 'The Pit',
+    desc: 'Everything on the menu starts here — dry rubs, patient smoke, and a kitchen you can watch from your seat.',
+    image: null,
+  },
+  {
+    icon: FaBeer,
+    title: 'The Bar',
+    desc: 'A rotating line-up of drafts poured beneath warm pendant lighting, built for slow evenings and second rounds.',
+    image: null,
+  },
+  {
+    icon: FaUsers,
+    title: 'The Room',
+    desc: 'Stone accents, black metal paneling, and string lighting set the tone the moment you walk in the door.',
+    image: '/images/gallery/exterior-1.jpg',
+  },
+];
+
 export default function About() {
   return (
     <div className="bg-charcoal-950">
@@ -42,21 +63,35 @@ export default function About() {
       </section>
 
       {/* Atmosphere */}
-      <section className="bg-charcoal-900 py-20">
+      <section className="bg-charcoal-900 py-24">
         <div className="mx-auto max-w-6xl px-4 md:px-8">
           <SectionHeading eyebrow="The Vibe" title="Rustic Roots," accent="Upscale Comfort" />
-          <div className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-3">
-            {[
-              { icon: FaFire, title: 'The Pit', desc: 'Watch our smokers work through the open kitchen window.' },
-              { icon: FaBeer, title: 'The Bar', desc: 'A rotating tap list poured beneath warm pendant lighting.' },
-              { icon: FaUsers, title: 'The Room', desc: 'Exposed stone walls and black metal paneling for a cozy, communal feel.' },
-            ].map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="card p-8 text-center">
-                <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-400/10 text-2xl text-emerald-400">
-                  <Icon />
+
+          <div className="mt-16 space-y-20">
+            {VIBE_SECTIONS.map((v, idx) => (
+              <div
+                key={v.title}
+                className={`grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-14 ${
+                  idx % 2 === 1 ? 'md:[direction:rtl]' : ''
+                }`}
+              >
+                <div className="aspect-[4/3] overflow-hidden rounded-lg border border-stone-700/30 bg-charcoal-800 md:[direction:ltr]">
+                  {v.image ? (
+                    <img src={v.image} alt={v.title} loading="lazy" className="h-full w-full object-cover" />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center text-3xl text-charcoal-600">
+                      <v.icon />
+                    </div>
+                  )}
                 </div>
-                <h4 className="mb-2 font-display text-xl text-stone-50">{title}</h4>
-                <p className="text-stone-300">{desc}</p>
+                <div className="md:[direction:ltr]">
+                  <div className="mb-3 flex items-center gap-3 text-emerald-400">
+                    <v.icon className="text-xl" />
+                    <span className="text-sm font-bold uppercase tracking-[0.2em]">Space {idx + 1}</span>
+                  </div>
+                  <h4 className="mb-3 font-display text-2xl text-stone-50 md:text-3xl">{v.title}</h4>
+                  <p className="text-stone-300">{v.desc}</p>
+                </div>
               </div>
             ))}
           </div>

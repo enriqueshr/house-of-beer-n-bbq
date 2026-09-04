@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes, FaPhone, FaClock, FaFacebook, FaInstagram } from 'react-icons/fa';
 import { useCart } from '../../context/CartContext';
 import Logo from './Logo';
 import Wordmark from './Wordmark';
 import { FEATURES } from '../../config/features';
+import { BUSINESS } from '../../config/business';
 
 const NAV_LINKS = [
   { to: '/', label: 'Home' },
@@ -37,6 +38,23 @@ export default function Header() {
         scrolled ? 'bg-charcoal-950/95 shadow-lg backdrop-blur-md' : 'bg-charcoal-950/70 backdrop-blur-sm'
       } border-b border-charcoal-800`}
     >
+      <div className="hidden border-b border-charcoal-800/60 bg-charcoal-950/60 lg:block">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-8 py-1.5 text-xs text-stone-400">
+          <div className="flex items-center gap-5">
+            <span className="flex items-center gap-1.5">
+              <FaPhone className="text-ember-400" /> {BUSINESS.phone}
+            </span>
+            <span className="flex items-center gap-1.5">
+              <FaClock className="text-ember-400" /> Open today &middot; 4pm&ndash;late
+            </span>
+          </div>
+          <div className="flex items-center gap-3 text-sm">
+            <FaFacebook className="text-stone-400 transition-colors hover:text-emerald-400" />
+            <FaInstagram className="text-stone-400 transition-colors hover:text-emerald-400" />
+          </div>
+        </div>
+      </div>
+
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
         <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
           <Logo className="h-11 w-11 md:h-14 md:w-14" />
