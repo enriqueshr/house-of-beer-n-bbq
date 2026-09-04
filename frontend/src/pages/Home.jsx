@@ -11,9 +11,24 @@ const HOURS = [
 ];
 
 const HIGHLIGHTS = [
-  { icon: FaFire, title: 'Slow-Smoked BBQ', desc: '14-hour brisket, fall-off-the-bone ribs, all smoked in-house daily.' },
-  { icon: FaBeer, title: 'Craft Beer on Tap', desc: 'Rotating local drafts alongside our house-brewed lager and amber ale.' },
-  { icon: FaUtensils, title: 'Warm Atmosphere', desc: 'Exposed stone, warm string lighting, black metal accents — rustic meets upscale.' },
+  {
+    icon: FaFire,
+    title: 'Slow-Smoked BBQ',
+    desc: '14-hour brisket, fall-off-the-bone ribs, all smoked in-house daily.',
+    image: '/images/gallery/food-1.jpg',
+  },
+  {
+    icon: FaBeer,
+    title: 'Craft Beer on Tap',
+    desc: 'Rotating local drafts alongside our house-brewed lager and amber ale.',
+    image: null,
+  },
+  {
+    icon: FaUtensils,
+    title: 'Warm Atmosphere',
+    desc: 'Exposed stone, warm string lighting, black metal accents — rustic meets upscale.',
+    image: '/images/gallery/exterior-1.jpg',
+  },
 ];
 
 export default function Home() {
@@ -74,17 +89,35 @@ export default function Home() {
       </section>
 
       {/* Highlights */}
-      <section id="highlights" className="bg-charcoal-950 bg-stone-texture py-20">
-        <div className="mx-auto max-w-7xl px-4 md:px-8">
+      <section id="highlights" className="bg-charcoal-950 bg-stone-texture py-24">
+        <div className="mx-auto max-w-6xl px-4 md:px-8">
           <SectionHeading eyebrow="Why We're Different" title="Fire, Smoke &" accent="Good Company" />
-          <div className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-3">
-            {HIGHLIGHTS.map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="card group p-8 transition-all hover:border-ember-500/50 hover:shadow-glow">
-                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-ember-500/10 text-2xl text-ember-400 transition-colors group-hover:bg-ember-500/20">
-                  <Icon />
+
+          <div className="mt-16 space-y-20">
+            {HIGHLIGHTS.map(({ icon: Icon, title, desc, image }, idx) => (
+              <div
+                key={title}
+                className={`grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-14 ${
+                  idx % 2 === 1 ? 'md:[direction:rtl]' : ''
+                }`}
+              >
+                <div className="aspect-[4/3] overflow-hidden rounded-lg border border-stone-700/30 bg-charcoal-800 md:[direction:ltr]">
+                  {image ? (
+                    <img src={image} alt={title} loading="lazy" className="h-full w-full object-cover" />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center text-3xl text-charcoal-600">
+                      <Icon />
+                    </div>
+                  )}
                 </div>
-                <h3 className="mb-2 text-xl font-display text-stone-50">{title}</h3>
-                <p className="text-stone-300">{desc}</p>
+                <div className="md:[direction:ltr]">
+                  <div className="mb-3 flex items-center gap-3 text-ember-400">
+                    <Icon className="text-xl" />
+                    <span className="text-sm font-bold uppercase tracking-[0.2em]">0{idx + 1}</span>
+                  </div>
+                  <h3 className="mb-3 font-display text-2xl text-stone-50 md:text-3xl">{title}</h3>
+                  <p className="text-stone-300">{desc}</p>
+                </div>
               </div>
             ))}
           </div>
