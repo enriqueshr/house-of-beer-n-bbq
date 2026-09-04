@@ -64,7 +64,7 @@ export default function AdminLogin() {
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
-        <Link to="/" className="mt-6 block text-center text-sm text-stone-400 hover:text-olive-400">
+        <Link to="/" className="mt-6 block text-center text-sm text-stone-400 hover:text-emerald-400">
           &larr; Back to site
         </Link>
       </div>

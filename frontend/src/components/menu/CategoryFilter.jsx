@@ -10,7 +10,7 @@ export default function CategoryFilter({ categories, active, onChange }) {
           className={`rounded-full border px-5 py-2 text-sm font-semibold uppercase tracking-wide transition-all ${
             active === cat.value
               ? 'border-ember-500 bg-ember-500 text-white shadow-glow'
-              : 'border-charcoal-600 text-stone-300 hover:border-olive-400 hover:text-olive-400'
+              : 'border-charcoal-600 text-stone-300 hover:border-emerald-400 hover:text-emerald-400'
           }`}
         >
           {cat.label}

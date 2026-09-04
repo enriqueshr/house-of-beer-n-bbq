@@ -25,7 +25,7 @@ export default function AdminLayout({ children }) {
       <aside className="hidden w-64 flex-shrink-0 border-r border-charcoal-800 bg-charcoal-900 md:block">
         <div className="p-6">
           <p className="font-display text-xl text-stone-50">
-            <span className="text-olive-400">HOBB</span> <span className="text-ember-500">Admin</span>
+            <span className="text-emerald-400">HOBB</span> <span className="text-ember-500">Admin</span>
           </p>
           <p className="mt-1 text-xs text-stone-400">{admin?.name}</p>
         </div>

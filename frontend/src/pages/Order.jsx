@@ -39,7 +39,7 @@ export default function Order() {
     return (
       <div className="flex min-h-[70vh] items-center justify-center bg-charcoal-950 px-4 py-20">
         <div className="card max-w-lg p-10 text-center">
-          <FaCheckCircle className="mx-auto mb-5 text-5xl text-olive-400" />
+          <FaCheckCircle className="mx-auto mb-5 text-5xl text-emerald-400" />
           <h2 className="mb-3 font-display text-3xl text-stone-50">Order Placed!</h2>
           <p className="mb-6 text-stone-300">
             We've received your order and sent a confirmation to your email. We'll reach out shortly.
@@ -89,7 +89,7 @@ export default function Order() {
                 <span className="font-display text-xl text-stone-50">Total</span>
                 <span className="font-display text-2xl text-ember-400">${total.toFixed(2)}</span>
               </div>
-              <Link to="/menu" className="mt-4 inline-block text-sm text-olive-400 hover:underline">
+              <Link to="/menu" className="mt-4 inline-block text-sm text-emerald-400 hover:underline">
                 &larr; Add more items
               </Link>
             </div>

@@ -93,7 +93,7 @@ export default function Contact() {
           {/* Form */}
           <div className="card p-8">
             {status === 'success' ? (
-              <div className="rounded-md border border-olive-500/40 bg-olive-500/10 p-6 text-center text-olive-300">
+              <div className="rounded-md border border-emerald-500/40 bg-emerald-500/10 p-6 text-center text-emerald-300">
                 Thanks for reaching out! We'll get back to you soon.
               </div>
             ) : (

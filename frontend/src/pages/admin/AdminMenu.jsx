@@ -88,12 +88,12 @@ export default function AdminMenu() {
                   <td className="p-4 text-stone-300">{item.category}</td>
                   <td className="p-4 text-stone-300">${Number(item.price).toFixed(2)}</td>
                   <td className="p-4">
-                    <span className={item.isAvailable ? 'text-olive-400' : 'text-stone-500'}>
+                    <span className={item.isAvailable ? 'text-emerald-400' : 'text-stone-500'}>
                       {item.isAvailable ? 'Yes' : 'No'}
                     </span>
                   </td>
                   <td className="p-4 text-right">
-                    <button onClick={() => openEdit(item)} className="mr-3 text-stone-300 hover:text-olive-400">
+                    <button onClick={() => openEdit(item)} className="mr-3 text-stone-300 hover:text-emerald-400">
                       <FaEdit />
                     </button>
                     <button onClick={() => handleDelete(item.id)} className="text-stone-300 hover:text-ember-500">

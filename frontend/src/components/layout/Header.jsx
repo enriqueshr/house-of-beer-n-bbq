@@ -28,7 +28,7 @@ export default function Header() {
 
   const linkClass = ({ isActive }) =>
     `text-sm font-semibold uppercase tracking-wide transition-colors ${
-      isActive ? 'text-ember-400' : 'text-stone-200 hover:text-olive-400'
+      isActive ? 'text-ember-400' : 'text-stone-200 hover:text-emerald-400'
     }`;
 
   return (

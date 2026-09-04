@@ -23,15 +23,15 @@ export default function Footer() {
         <div>
           <h4 className="mb-4 font-display text-lg text-stone-50">Quick Links</h4>
           <ul className="space-y-2 text-sm text-stone-300">
-            <li><Link to="/menu" className="hover:text-olive-400">Menu</Link></li>
+            <li><Link to="/menu" className="hover:text-emerald-400">Menu</Link></li>
             {FEATURES.reservations && (
-              <li><Link to="/reservations" className="hover:text-olive-400">Reservations</Link></li>
+              <li><Link to="/reservations" className="hover:text-emerald-400">Reservations</Link></li>
             )}
             {FEATURES.orderOnline && (
-              <li><Link to="/order" className="hover:text-olive-400">Order Online</Link></li>
+              <li><Link to="/order" className="hover:text-emerald-400">Order Online</Link></li>
             )}
-            <li><Link to="/about" className="hover:text-olive-400">About Us</Link></li>
-            <li><Link to="/gallery" className="hover:text-olive-400">Gallery</Link></li>
+            <li><Link to="/about" className="hover:text-emerald-400">About Us</Link></li>
+            <li><Link to="/gallery" className="hover:text-emerald-400">Gallery</Link></li>
           </ul>
         </div>
 

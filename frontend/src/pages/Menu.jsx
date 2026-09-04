@@ -79,7 +79,7 @@ export default function Menu() {
           !error &&
           Object.entries(grouped).map(([category, categoryItems]) => (
             <div key={category} className="mb-16 last:mb-0">
-              <h3 className="mb-6 font-display text-2xl text-olive-400">
+              <h3 className="mb-6 font-display text-2xl text-emerald-400">
                 {CATEGORIES.find((c) => c.value === category)?.label || category}
               </h3>
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">

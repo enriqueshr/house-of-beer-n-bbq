@@ -48,7 +48,7 @@ export default function AdminContact() {
                 </div>
                 <div className="flex gap-3">
                   {!s.isRead && (
-                    <button onClick={() => markRead(s.id)} className="text-stone-300 hover:text-olive-400" title="Mark as read">
+                    <button onClick={() => markRead(s.id)} className="text-stone-300 hover:text-emerald-400" title="Mark as read">
                       <FaEnvelopeOpen />
                     </button>
                   )}

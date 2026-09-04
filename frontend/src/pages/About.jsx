@@ -52,7 +52,7 @@ export default function About() {
               { icon: FaUsers, title: 'The Room', desc: 'Exposed stone walls and black metal paneling for a cozy, communal feel.' },
             ].map(({ icon: Icon, title, desc }) => (
               <div key={title} className="card p-8 text-center">
-                <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-olive-400/10 text-2xl text-olive-400">
+                <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-400/10 text-2xl text-emerald-400">
                   <Icon />
                 </div>
                 <h4 className="mb-2 font-display text-xl text-stone-50">{title}</h4>

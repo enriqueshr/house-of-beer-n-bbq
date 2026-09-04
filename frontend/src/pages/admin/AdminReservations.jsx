@@ -7,7 +7,7 @@ import { useAuth } from '../../context/AuthContext';
 const STATUSES = ['PENDING', 'CONFIRMED', 'CANCELLED', 'COMPLETED'];
 const STATUS_COLORS = {
   PENDING: 'text-stone-300',
-  CONFIRMED: 'text-olive-400',
+  CONFIRMED: 'text-emerald-400',
   CANCELLED: 'text-ember-500',
   COMPLETED: 'text-stone-400',
 };

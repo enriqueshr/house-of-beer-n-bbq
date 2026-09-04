@@ -33,10 +33,10 @@ export default function Home() {
         />
         <div className="relative z-10 mx-auto max-w-5xl px-4 text-center md:px-8">
           <h1 className="font-brand text-5xl leading-tight tracking-wide [text-shadow:0_4px_24px_rgba(0,0,0,0.65)] sm:text-6xl md:text-7xl lg:text-8xl">
-            <span className="text-olive-400">THE HOUSE OF</span>
+            <span className="text-shine-emerald">THE HOUSE OF</span>
             <br />
-            <span className="text-ember-500">BEER</span> <span className="text-olive-400">N'</span>{' '}
-            <span className="text-ember-500">BBQ</span> <FaBeer className="inline text-ember-400" />
+            <span className="text-shine-ember">BEER</span> <span className="text-shine-emerald">N'</span>{' '}
+            <span className="text-shine-ember">BBQ</span> <FaBeer className="inline text-ember-400" />
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg text-stone-200 md:text-xl">
             Slow-smoked meats, cold craft beer, and warm string lights — pull up a seat.
