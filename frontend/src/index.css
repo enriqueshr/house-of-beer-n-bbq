@@ -18,11 +18,6 @@ h1, h2, h3, h4 {
   @apply bg-ember-500/40 text-white;
 }
 
-@keyframes text-shine {
-  0% { background-position: 200% center; }
-  100% { background-position: -200% center; }
-}
-
 @layer components {
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 rounded-md bg-ember-500 px-6 py-3 font-body font-semibold text-white shadow-glow transition-all hover:bg-ember-600 hover:shadow-glow active:scale-95;
@@ -37,23 +32,15 @@ h1, h2, h3, h4 {
     @apply text-4xl md:text-5xl font-display font-bold tracking-tight text-stone-50;
   }
   .section-heading-accent {
-    @apply text-shine-emerald;
+    @apply text-emerald-400;
   }
   .text-shine-emerald {
-    background-image: linear-gradient(110deg, theme('colors.emerald.700') 15%, theme('colors.emerald.300') 38%, #d8fff0 50%, theme('colors.emerald.300') 62%, theme('colors.emerald.700') 85%);
-    background-size: 220% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: text-shine 4s ease-in-out infinite;
+    color: theme('colors.emerald.400');
+    text-shadow: 0 0 18px rgba(137, 171, 72, 0.45);
   }
   .text-shine-ember {
-    background-image: linear-gradient(110deg, theme('colors.ember.700') 15%, theme('colors.ember.300') 38%, #fff3e0 50%, theme('colors.ember.300') 62%, theme('colors.ember.700') 85%);
-    background-size: 220% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: text-shine 4s ease-in-out infinite;
+    color: theme('colors.ember.400');
+    text-shadow: 0 0 18px rgba(245, 146, 47, 0.45);
   }
   .card {
     @apply rounded-lg border border-stone-700/30 bg-charcoal-900/60 backdrop-blur-sm;
