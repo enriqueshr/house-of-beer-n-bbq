@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import SectionHeading from '../components/ui/SectionHeading';
 
 const GALLERY_IMAGES = [
+  { src: '/images/gallery/exterior-1.jpg', alt: 'Storefront exterior at dusk', category: 'Exterior' },
   { src: '/images/gallery/food-1.jpg', alt: 'Spiced grilled chicken bites with tomato dip', category: 'Food' },
   { src: '/images/gallery/food-2.jpg', alt: 'Grilled sausage and mushroom sizzler', category: 'Food' },
   { src: '/images/gallery/food-3.jpg', alt: 'Spicy chicken with charred onions', category: 'Food' },
