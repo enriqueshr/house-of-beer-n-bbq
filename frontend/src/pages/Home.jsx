@@ -23,20 +23,20 @@ export default function Home() {
       <section className="relative flex min-h-[92vh] items-center overflow-hidden bg-charcoal-950">
         <div className="absolute inset-0 bg-warm-radial" />
         <div
-          className="absolute inset-0 bg-gradient-to-b from-charcoal-950/70 via-charcoal-950/60 to-charcoal-950"
+          className="absolute inset-0"
           style={{
             backgroundImage:
-              'linear-gradient(to bottom, rgba(15,13,12,0.75), rgba(15,13,12,0.65) 50%, rgba(15,13,12,1)), url(/images/storefront-hero.jpg)',
+              'linear-gradient(to bottom, rgba(15,13,12,0.55), rgba(15,13,12,0.4) 45%, rgba(15,13,12,0.97)), url(/images/storefront-hero.jpg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         />
         <div className="relative z-10 mx-auto max-w-5xl px-4 text-center md:px-8">
-          <h1 className="font-display text-5xl leading-tight sm:text-6xl md:text-7xl lg:text-8xl">
+          <h1 className="font-brand text-5xl leading-tight tracking-wide [text-shadow:0_4px_24px_rgba(0,0,0,0.65)] sm:text-6xl md:text-7xl lg:text-8xl">
             <span className="text-olive-400">THE HOUSE OF</span>
             <br />
-            <span className="text-ember-500">BEER N' BBQ</span>{' '}
-            <FaBeer className="inline text-ember-400" />
+            <span className="text-ember-500">BEER</span> <span className="text-olive-400">N'</span>{' '}
+            <span className="text-ember-500">BBQ</span> <FaBeer className="inline text-ember-400" />
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg text-stone-200 md:text-xl">
             Slow-smoked meats, cold craft beer, and warm string lights — pull up a seat.
@@ -66,7 +66,7 @@ export default function Home() {
       </section>
 
       {/* Highlights */}
-      <section className="bg-charcoal-950 py-20">
+      <section className="bg-charcoal-950 bg-stone-texture py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
           <SectionHeading eyebrow="Why We're Different" title="Fire, Smoke &" accent="Good Company" />
           <div className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-3">

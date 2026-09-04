@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaFacebook, FaInstagram, FaTiktok, FaBeer, FaPhone, FaClock } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaTiktok, FaPhone, FaClock } from 'react-icons/fa';
 import Logo from './Logo';
+import Wordmark from './Wordmark';
 import { BUSINESS } from '../../config/business';
 import { FEATURES } from '../../config/features';
 
@@ -12,10 +13,7 @@ export default function Footer() {
         <div>
           <div className="mb-4 flex items-center gap-3">
             <Logo className="h-12 w-12" />
-            <span className="font-display text-lg">
-              <span className="text-olive-400">THE HOUSE OF</span>{' '}
-              <span className="text-ember-500">BEER N' BBQ</span> <FaBeer className="inline text-ember-400" />
-            </span>
+            <Wordmark className="text-lg tracking-wide" />
           </div>
           <p className="text-sm text-stone-300">
             Slow-smoked BBQ and craft beer in a warm, welcoming space.

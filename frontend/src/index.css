@@ -11,7 +11,7 @@ body {
 }
 
 h1, h2, h3, h4 {
-  @apply font-display tracking-wide;
+  @apply font-display font-semibold tracking-tight;
 }
 
 ::selection {
@@ -29,13 +29,13 @@ h1, h2, h3, h4 {
     @apply inline-flex items-center justify-center gap-2 rounded-md border border-stone-400/40 px-6 py-3 font-body font-semibold text-stone-100 transition-all hover:border-stone-100 active:scale-95;
   }
   .section-heading {
-    @apply text-4xl md:text-5xl font-display text-stone-50;
+    @apply text-4xl md:text-5xl font-display font-bold tracking-tight text-stone-50;
   }
   .section-heading-accent {
     @apply text-olive-400;
   }
   .card {
-    @apply rounded-lg border border-charcoal-700 bg-charcoal-900/60 backdrop-blur-sm;
+    @apply rounded-lg border border-stone-700/30 bg-charcoal-900/60 backdrop-blur-sm;
   }
   .input-field {
     @apply w-full rounded-md border border-charcoal-600 bg-charcoal-800 px-4 py-3 text-stone-50 placeholder-stone-400 focus:border-ember-500 focus:outline-none focus:ring-1 focus:ring-ember-500;

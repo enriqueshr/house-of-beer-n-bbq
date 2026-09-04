@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { FaBars, FaTimes, FaBeer } from 'react-icons/fa';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import { useCart } from '../../context/CartContext';
 import Logo from './Logo';
+import Wordmark from './Wordmark';
 import { FEATURES } from '../../config/features';
 
 const NAV_LINKS = [
@@ -39,11 +40,7 @@ export default function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
         <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
           <Logo className="h-11 w-11 md:h-14 md:w-14" />
-          <span className="hidden font-display text-xl leading-tight sm:block md:text-2xl">
-            <span className="text-olive-400">THE HOUSE OF</span>{' '}
-            <span className="text-ember-500">BEER N' BBQ</span>{' '}
-            <FaBeer className="ml-1 inline text-ember-400" />
-          </span>
+          <Wordmark className="hidden text-xl leading-tight tracking-wide sm:block md:text-2xl" />
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex">

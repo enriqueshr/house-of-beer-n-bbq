@@ -55,7 +55,8 @@ export default {
         },
       },
       fontFamily: {
-        display: ['"Bebas Neue"', '"Oswald"', 'sans-serif'],
+        display: ['"Oswald"', '"Inter"', 'sans-serif'],
+        brand: ['"Bebas Neue"', '"Oswald"', 'sans-serif'],
         body: ['"Inter"', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
@@ -63,7 +64,8 @@ export default {
         'glow-olive': '0 0 30px rgba(152, 183, 58, 0.2)',
       },
       backgroundImage: {
-        'warm-radial': 'radial-gradient(circle at 50% 0%, rgba(226,98,28,0.15), transparent 60%)',
+        'warm-radial': 'radial-gradient(circle at 50% 0%, rgba(226,98,28,0.16), transparent 60%)',
+        'stone-texture': 'linear-gradient(180deg, rgba(203,182,143,0.06), rgba(203,182,143,0) 40%)',
       },
     },
   },
