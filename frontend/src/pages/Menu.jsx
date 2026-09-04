@@ -82,9 +82,9 @@ export default function Menu() {
               <h3 className="mb-6 font-display text-2xl text-olive-400">
                 {CATEGORIES.find((c) => c.value === category)?.label || category}
               </h3>
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
                 {categoryItems.map((item) => (
-                  <MenuCard key={item.id} item={item} showAddToCart />
+                  <MenuCard key={item.id} item={item} />
                 ))}
               </div>
             </div>

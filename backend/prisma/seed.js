@@ -6,32 +6,26 @@ const prisma = new PrismaClient();
 
 const menuItems = [
   // Appetizers
-  { name: 'Smoked Wings', description: 'Applewood-smoked wings tossed in your choice of dry rub or sauce.', price: 12.99, category: 'APPETIZERS', sortOrder: 1 },
-  { name: 'Loaded Brisket Fries', description: 'Crispy fries topped with chopped brisket, cheese sauce, jalapenos, and pickled onion.', price: 14.99, category: 'APPETIZERS', sortOrder: 2 },
-  { name: 'Fried Pickles', description: 'Beer-battered pickle chips with a smoky ranch dip.', price: 8.99, category: 'APPETIZERS', sortOrder: 3 },
+  { name: 'Chicken Sekuwa', description: 'Spiced grilled chicken skewers, a house classic, served with tomato dip.', price: 11.99, category: 'APPETIZERS', imageUrl: '/images/gallery/food-1.jpg', sortOrder: 1 },
+  { name: 'Sausage & Mushroom Sizzler', description: 'Grilled sausages with mushrooms, onions, and egg on a sizzling platter.', price: 12.99, category: 'APPETIZERS', imageUrl: '/images/gallery/food-2.jpg', sortOrder: 2 },
+  { name: 'Crispy Chicken Sekuwa', description: 'Extra-crispy spiced chicken bites, smoked and charred.', price: 11.99, category: 'APPETIZERS', imageUrl: '/images/gallery/food-8.jpg', sortOrder: 3 },
+  { name: 'Golden Fried Chicken Bites', description: 'Crispy fried chicken bites, deeply spiced.', price: 10.99, category: 'APPETIZERS', imageUrl: '/images/gallery/food-9.jpg', sortOrder: 4 },
+  { name: 'Chicken Sekuwa with Peanut Sauce', description: 'Grilled chicken sekuwa served with a rich peanut dipping sauce.', price: 12.99, category: 'APPETIZERS', imageUrl: '/images/gallery/food-12.jpg', sortOrder: 5 },
 
   // BBQ Mains
-  { name: 'Full Rack Ribs', description: 'St. Louis ribs, dry-rubbed and slow smoked, finished with house BBQ sauce.', price: 26.99, category: 'BBQ_MAINS', sortOrder: 1 },
-  { name: 'Brisket Plate', description: '14-hour smoked brisket, sliced thick, with two sides.', price: 22.99, category: 'BBQ_MAINS', sortOrder: 2 },
-  { name: 'Pulled Pork Sandwich', description: 'Slow-smoked pulled pork, house slaw, brioche bun.', price: 15.99, category: 'BBQ_MAINS', sortOrder: 3 },
-  { name: 'Beer Can Chicken', description: 'Whole smoked chicken brined in our house lager.', price: 19.99, category: 'BBQ_MAINS', sortOrder: 4 },
-
-  // Beer / Drinks
-  { name: 'House Lager', description: 'Crisp, clean, brewed locally.', price: 6.5, category: 'BEER_DRINKS', sortOrder: 1 },
-  { name: 'Smoked Amber Ale', description: 'Malty amber ale with a hint of smoke.', price: 7.5, category: 'BEER_DRINKS', sortOrder: 2 },
-  { name: 'Bourbon Peach Tea', description: 'Sweet tea, bourbon, fresh peach.', price: 9.0, category: 'BEER_DRINKS', sortOrder: 3 },
-
-  // Sides
-  { name: 'Mac N Cheese', description: 'Smoked gouda and cheddar mac, toasted breadcrumb top.', price: 6.99, category: 'SIDES', sortOrder: 1 },
-  { name: 'Collard Greens', description: 'Slow-cooked with smoked ham hock.', price: 5.99, category: 'SIDES', sortOrder: 2 },
-  { name: 'Cornbread', description: 'Skillet-baked, honey butter.', price: 4.99, category: 'SIDES', sortOrder: 3 },
-
-  // Desserts
-  { name: 'Bourbon Pecan Pie', description: 'Warm, with a scoop of vanilla bean ice cream.', price: 8.99, category: 'DESSERTS', sortOrder: 1 },
-  { name: 'Banana Pudding', description: 'Classic Southern style, vanilla wafers.', price: 6.99, category: 'DESSERTS', sortOrder: 2 },
+  { name: 'Chicken Chhoila', description: 'Spicy pan-seared chicken tossed with charred onion and herbs.', price: 14.99, category: 'BBQ_MAINS', imageUrl: '/images/gallery/food-3.jpg', sortOrder: 1 },
+  { name: 'Chicken Tikka Skewers', description: 'Marinated chicken skewers grilled and topped with green chutney.', price: 15.99, category: 'BBQ_MAINS', imageUrl: '/images/gallery/food-4.jpg', sortOrder: 2 },
+  { name: 'Sekuwa Rice Combo', description: 'Grilled chicken skewers served with smoky fried rice.', price: 16.99, category: 'BBQ_MAINS', imageUrl: '/images/gallery/food-5.jpg', sortOrder: 3 },
+  { name: 'Chicken Skewers with Pickled Onion', description: 'Char-grilled chicken skewers with tangy pickled onion.', price: 14.99, category: 'BBQ_MAINS', imageUrl: '/images/gallery/food-6.jpg', sortOrder: 4 },
+  { name: 'Chili Chicken', description: 'Wok-tossed chicken with bell peppers in a spicy glaze.', price: 15.99, category: 'BBQ_MAINS', imageUrl: '/images/gallery/food-7.jpg', sortOrder: 5 },
+  { name: 'Grilled Sekuwa with Lime', description: 'Charcoal-grilled chicken sekuwa with fresh lime and onion.', price: 15.99, category: 'BBQ_MAINS', imageUrl: '/images/gallery/food-10.jpg', sortOrder: 6 },
+  { name: 'Herb Chili Chicken', description: 'Chili chicken stir-fry finished with fresh herbs.', price: 15.99, category: 'BBQ_MAINS', imageUrl: '/images/gallery/food-11.jpg', sortOrder: 7 },
 ];
 
 async function main() {
+  console.log('Clearing existing menu items...');
+  await prisma.menuItem.deleteMany();
+
   console.log('Seeding menu items...');
   for (const item of menuItems) {
     await prisma.menuItem.create({ data: item });
