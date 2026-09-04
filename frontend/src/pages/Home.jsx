@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaUtensils, FaCalendarAlt, FaShoppingBag, FaBeer, FaFire, FaClock, FaEnvelope } from 'react-icons/fa';
+import { FaUtensils, FaCalendarAlt, FaShoppingBag, FaBeer, FaFire, FaClock, FaEnvelope, FaChevronDown } from 'react-icons/fa';
 import SectionHeading from '../components/ui/SectionHeading';
 import { FEATURES } from '../config/features';
 
@@ -63,10 +63,18 @@ export default function Home() {
             <span>Open today: {HOURS[0].time.split(' - ')[0]} - late &middot; See full hours below</span>
           </div>
         </div>
+
+        <button
+          onClick={() => document.getElementById('highlights')?.scrollIntoView({ behavior: 'smooth' })}
+          aria-label="Scroll to learn more"
+          className="group absolute inset-x-0 bottom-8 z-10 mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-ember-400/40 bg-charcoal-950/50 text-ember-400 shadow-glow backdrop-blur-sm transition-all hover:border-ember-400 hover:bg-charcoal-950/80 hover:text-ember-300"
+        >
+          <FaChevronDown className="animate-bounce transition-transform group-hover:translate-y-0.5" />
+        </button>
       </section>
 
       {/* Highlights */}
-      <section className="bg-charcoal-950 bg-stone-texture py-20">
+      <section id="highlights" className="bg-charcoal-950 bg-stone-texture py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
           <SectionHeading eyebrow="Why We're Different" title="Fire, Smoke &" accent="Good Company" />
           <div className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-3">

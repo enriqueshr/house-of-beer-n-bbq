@@ -2,19 +2,8 @@ import React, { useState } from 'react';
 import SectionHeading from '../components/ui/SectionHeading';
 
 const GALLERY_IMAGES = [
-  { src: '/images/gallery/exterior-1.jpg', alt: 'Storefront exterior at dusk', category: 'Exterior' },
-  { src: '/images/gallery/food-1.jpg', alt: 'Spiced grilled chicken bites with tomato dip', category: 'Food' },
-  { src: '/images/gallery/food-2.jpg', alt: 'Grilled sausage and mushroom sizzler', category: 'Food' },
-  { src: '/images/gallery/food-3.jpg', alt: 'Spicy chicken with charred onions', category: 'Food' },
-  { src: '/images/gallery/food-4.jpg', alt: 'Chicken tikka skewers with green chutney', category: 'Food' },
-  { src: '/images/gallery/food-5.jpg', alt: 'Fried rice bowl and chicken skewers', category: 'Food' },
-  { src: '/images/gallery/food-6.jpg', alt: 'Chicken skewers with pickled onion', category: 'Food' },
-  { src: '/images/gallery/food-7.jpg', alt: 'Chili chicken with bell peppers', category: 'Food' },
-  { src: '/images/gallery/food-8.jpg', alt: 'Crispy spiced chicken bites', category: 'Food' },
-  { src: '/images/gallery/food-9.jpg', alt: 'Golden fried chicken platter', category: 'Food' },
-  { src: '/images/gallery/food-10.jpg', alt: 'Grilled chicken with lime and dip', category: 'Food' },
-  { src: '/images/gallery/food-11.jpg', alt: 'Chili chicken stir-fry with herbs', category: 'Food' },
-  { src: '/images/gallery/food-12.jpg', alt: 'Chicken sekuwa with peanut sauce', category: 'Food' },
+  { src: '/images/storefront-hero.jpg', alt: 'Storefront exterior, straight-on view at dusk', category: 'Exterior' },
+  { src: '/images/gallery/exterior-1.jpg', alt: 'Storefront exterior, angled view at dusk', category: 'Exterior' },
 ];
 
 export default function Gallery() {
@@ -25,12 +14,12 @@ export default function Gallery() {
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <SectionHeading eyebrow="Take a Look Inside" title="Photo" accent="Gallery" />
 
-        <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-6">
+        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2">
           {GALLERY_IMAGES.map((img, idx) => (
             <button
               key={idx}
               onClick={() => setLightbox(img)}
-              className="group aspect-square overflow-hidden rounded-lg border border-charcoal-700 bg-charcoal-800"
+              className="group aspect-[4/3] overflow-hidden rounded-lg border border-stone-700/30 bg-charcoal-800 shadow-lg transition-all hover:border-ember-500/50 hover:shadow-glow"
             >
               <img
                 src={img.src}
@@ -49,6 +38,7 @@ export default function Gallery() {
             </button>
           ))}
         </div>
+        <p className="mt-8 text-center text-sm text-stone-500">Interior and food photos coming soon.</p>
       </div>
 
       {lightbox && (
