@@ -14,14 +14,14 @@ const HIGHLIGHTS = [
   {
     icon: FaFire,
     title: 'Slow-Smoked BBQ',
-    desc: '14-hour brisket, fall-off-the-bone ribs, all smoked in-house daily.',
-    image: '/images/gallery/food-1.jpg',
+    desc: 'Bone-in chicken, dry-rubbed and smoked low and slow until it falls off the bone.',
+    image: '/images/slow-smoked-chicken.webp',
   },
   {
     icon: FaBeer,
     title: 'Craft Beer on Tap',
     desc: 'Rotating local drafts alongside our house-brewed lager and amber ale.',
-    image: null,
+    image: '/images/craft-beer.jpg',
   },
   {
     icon: FaUtensils,
