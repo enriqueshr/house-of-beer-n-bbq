@@ -1,100 +1,63 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { api } from '../api/client';
+import React, { useState } from 'react';
+import { FaSearchPlus } from 'react-icons/fa';
 import SectionHeading from '../components/ui/SectionHeading';
-import CategoryFilter from '../components/menu/CategoryFilter';
-import MenuCard from '../components/menu/MenuCard';
 
-const CATEGORIES = [
-  { value: 'ALL', label: 'All' },
-  { value: 'NEPALI_BBQ', label: 'BBQ & Sekuwa' },
-  { value: 'APPETIZERS', label: 'Appetizers' },
-  { value: 'SUSHI', label: 'Sushi' },
-  { value: 'MAIN_COURSE', label: 'Main Course' },
-  { value: 'NOODLES', label: 'Noodles' },
-  { value: 'MOMO', label: 'Momo' },
-  { value: 'NEPALI_VEG', label: 'Nepali & Veg' },
-  { value: 'BENTO_SETS', label: 'Bento & Sets' },
-  { value: 'SIDES', label: 'Sides' },
-  { value: 'BEER_DRINKS', label: 'Beer & Drinks' },
+const MENU_PAGES = [
+  '/images/menu/page-1.jpg',
+  '/images/menu/page-2.jpg',
+  '/images/menu/page-3.jpg',
+  '/images/menu/page-4.jpg',
+  '/images/menu/page-5.jpg',
+  '/images/menu/page-6.jpg',
 ];
 
 export default function Menu() {
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [activeCategory, setActiveCategory] = useState('ALL');
-
-  useEffect(() => {
-    let cancelled = false;
-    setLoading(true);
-    api
-      .get('/menu')
-      .then((data) => {
-        if (!cancelled) setItems(data.filter((i) => i.isAvailable !== false));
-      })
-      .catch((err) => {
-        if (!cancelled) setError(err.message);
-      })
-      .finally(() => {
-        if (!cancelled) setLoading(false);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  const filtered = useMemo(
-    () => (activeCategory === 'ALL' ? items : items.filter((i) => i.category === activeCategory)),
-    [items, activeCategory]
-  );
-
-  const grouped = useMemo(() => {
-    const groups = {};
-    filtered.forEach((item) => {
-      if (!groups[item.category]) groups[item.category] = [];
-      groups[item.category].push(item);
-    });
-    return groups;
-  }, [filtered]);
+  const [lightbox, setLightbox] = useState(null);
 
   return (
     <div className="bg-charcoal-950 py-20">
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <SectionHeading eyebrow="Straight From the Smoker" title="Our" accent="Menu" />
+      <div className="mx-auto max-w-3xl px-4 md:px-8">
+        <SectionHeading eyebrow="Straight From the Kitchen" title="Our" accent="Menu" />
+        <p className="mx-auto mt-4 max-w-lg text-center text-sm text-stone-400">
+          Tap any page to zoom in and read the full details.
+        </p>
 
-        <div className="mt-10 mb-14">
-          <CategoryFilter categories={CATEGORIES} active={activeCategory} onChange={setActiveCategory} />
-        </div>
-
-        {loading && (
-          <div className="py-20 text-center text-stone-400">Loading menu...</div>
-        )}
-
-        {error && (
-          <div className="mx-auto max-w-md rounded-md border border-ember-700 bg-ember-900/20 p-6 text-center text-ember-300">
-            Couldn't load the menu right now ({error}). Please try again shortly.
-          </div>
-        )}
-
-        {!loading && !error && filtered.length === 0 && (
-          <div className="py-20 text-center text-stone-400">No items in this category yet.</div>
-        )}
-
-        {!loading &&
-          !error &&
-          Object.entries(grouped).map(([category, categoryItems]) => (
-            <div key={category} className="mb-16 last:mb-0">
-              <h3 className="mb-6 font-display text-2xl text-emerald-400">
-                {CATEGORIES.find((c) => c.value === category)?.label || category}
-              </h3>
-              <div className="grid grid-cols-2 items-start gap-4 sm:grid-cols-3 lg:grid-cols-4">
-                {categoryItems.map((item) => (
-                  <MenuCard key={item.id} item={item} />
-                ))}
-              </div>
-            </div>
+        <div className="mt-14 space-y-8">
+          {MENU_PAGES.map((src, idx) => (
+            <button
+              key={src}
+              onClick={() => setLightbox(src)}
+              className="group relative block w-full overflow-hidden rounded-lg border border-stone-700/30 shadow-lg transition-all hover:border-ember-500/50 hover:shadow-glow"
+            >
+              <img
+                src={src}
+                alt={`Menu page ${idx + 1}`}
+                loading="lazy"
+                className="w-full"
+              />
+              <span className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-charcoal-950/70 text-stone-100 opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100">
+                <FaSearchPlus size={14} />
+              </span>
+              <span className="absolute bottom-3 left-3 rounded-full bg-charcoal-950/70 px-3 py-1 text-xs text-stone-300 backdrop-blur-sm">
+                Page {idx + 1} of {MENU_PAGES.length}
+              </span>
+            </button>
           ))}
+        </div>
       </div>
+
+      {lightbox && (
+        <div
+          className="fixed inset-0 z-[100] overflow-auto bg-charcoal-950/95 p-4"
+          onClick={() => setLightbox(null)}
+        >
+          <img
+            src={lightbox}
+            alt="Menu page enlarged"
+            className="mx-auto max-w-full rounded-lg border border-charcoal-700"
+          />
+        </div>
+      )}
     </div>
   );
 }
