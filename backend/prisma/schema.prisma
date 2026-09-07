@@ -9,9 +9,15 @@ datasource db {
 
 enum MenuCategory {
   APPETIZERS
-  BBQ_MAINS
-  BEER_DRINKS
+  SUSHI
+  NOODLES
+  MAIN_COURSE
+  BENTO_SETS
+  NEPALI_VEG
+  MOMO
+  NEPALI_BBQ
   SIDES
+  BEER_DRINKS
   DESSERTS
 }
 

@@ -4,7 +4,19 @@ import AdminLayout from '../../components/admin/AdminLayout';
 import { api } from '../../api/client';
 import { useAuth } from '../../context/AuthContext';
 
-const CATEGORIES = ['APPETIZERS', 'BBQ_MAINS', 'BEER_DRINKS', 'SIDES', 'DESSERTS'];
+const CATEGORIES = [
+  'APPETIZERS',
+  'SUSHI',
+  'NOODLES',
+  'MAIN_COURSE',
+  'BENTO_SETS',
+  'NEPALI_VEG',
+  'MOMO',
+  'NEPALI_BBQ',
+  'SIDES',
+  'BEER_DRINKS',
+  'DESSERTS',
+];
 const emptyForm = { name: '', description: '', price: '', category: 'APPETIZERS', imageUrl: '', isAvailable: true, sortOrder: 0 };
 
 export default function AdminMenu() {
@@ -86,7 +98,7 @@ export default function AdminMenu() {
                 <tr key={item.id} className="border-b border-charcoal-800 last:border-0">
                   <td className="p-4 font-medium text-stone-100">{item.name}</td>
                   <td className="p-4 text-stone-300">{item.category}</td>
-                  <td className="p-4 text-stone-300">${Number(item.price).toFixed(2)}</td>
+                  <td className="p-4 text-stone-300">Rs. {Number(item.price).toLocaleString()}</td>
                   <td className="p-4">
                     <span className={item.isAvailable ? 'text-emerald-400' : 'text-stone-500'}>
                       {item.isAvailable ? 'Yes' : 'No'}

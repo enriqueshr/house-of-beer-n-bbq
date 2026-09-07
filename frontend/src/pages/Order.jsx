@@ -68,7 +68,7 @@ export default function Order() {
                   <div key={item.id} className="flex items-center justify-between gap-4 p-5">
                     <div>
                       <p className="font-semibold text-stone-50">{item.name}</p>
-                      <p className="text-sm text-stone-400">${item.price.toFixed(2)} each</p>
+                      <p className="text-sm text-stone-400">Rs. {item.price.toLocaleString()} each</p>
                     </div>
                     <div className="flex items-center gap-3">
                       <button onClick={() => updateQty(item.id, item.qty - 1)} className="rounded-md border border-charcoal-600 p-2 text-stone-300 hover:border-ember-500">
@@ -87,7 +87,7 @@ export default function Order() {
               </div>
               <div className="card mt-6 flex items-center justify-between p-5">
                 <span className="font-display text-xl text-stone-50">Total</span>
-                <span className="font-display text-2xl text-ember-400">${total.toFixed(2)}</span>
+                <span className="font-display text-2xl text-ember-400">Rs. {total.toLocaleString()}</span>
               </div>
               <Link to="/menu" className="mt-4 inline-block text-sm text-emerald-400 hover:underline">
                 &larr; Add more items
@@ -142,7 +142,7 @@ export default function Order() {
                 {status === 'error' && <p className="text-sm text-ember-400">{error}</p>}
 
                 <button type="submit" disabled={status === 'submitting'} className="btn-primary w-full disabled:opacity-60">
-                  {status === 'submitting' ? 'Placing order...' : `Place Order - $${total.toFixed(2)}`}
+                  {status === 'submitting' ? 'Placing order...' : `Place Order - Rs. ${total.toLocaleString()}`}
                 </button>
                 <p className="text-center text-xs text-stone-400">
                   Payment collected at pickup/delivery. We'll call to confirm.

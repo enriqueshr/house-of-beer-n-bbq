@@ -6,10 +6,16 @@ import MenuCard from '../components/menu/MenuCard';
 
 const CATEGORIES = [
   { value: 'ALL', label: 'All' },
+  { value: 'NEPALI_BBQ', label: 'BBQ & Sekuwa' },
   { value: 'APPETIZERS', label: 'Appetizers' },
-  { value: 'BBQ_MAINS', label: 'BBQ Mains' },
-  { value: 'BEER_DRINKS', label: 'Beer & Drinks' },
+  { value: 'SUSHI', label: 'Sushi' },
+  { value: 'MAIN_COURSE', label: 'Main Course' },
+  { value: 'NOODLES', label: 'Noodles' },
+  { value: 'MOMO', label: 'Momo' },
+  { value: 'NEPALI_VEG', label: 'Nepali & Veg' },
+  { value: 'BENTO_SETS', label: 'Bento & Sets' },
   { value: 'SIDES', label: 'Sides' },
+  { value: 'BEER_DRINKS', label: 'Beer & Drinks' },
   { value: 'DESSERTS', label: 'Desserts' },
 ];
 
@@ -82,7 +88,7 @@ export default function Menu() {
               <h3 className="mb-6 font-display text-2xl text-emerald-400">
                 {CATEGORIES.find((c) => c.value === category)?.label || category}
               </h3>
-              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+              <div className="grid grid-cols-2 items-start gap-4 sm:grid-cols-3 lg:grid-cols-4">
                 {categoryItems.map((item) => (
                   <MenuCard key={item.id} item={item} />
                 ))}
