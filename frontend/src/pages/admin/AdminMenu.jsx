@@ -15,7 +15,6 @@ const CATEGORIES = [
   'NEPALI_BBQ',
   'SIDES',
   'BEER_DRINKS',
-  'DESSERTS',
 ];
 const emptyForm = { name: '', description: '', price: '', category: 'APPETIZERS', imageUrl: '', isAvailable: true, sortOrder: 0 };
 

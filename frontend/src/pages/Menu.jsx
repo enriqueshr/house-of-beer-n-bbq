@@ -16,7 +16,6 @@ const CATEGORIES = [
   { value: 'BENTO_SETS', label: 'Bento & Sets' },
   { value: 'SIDES', label: 'Sides' },
   { value: 'BEER_DRINKS', label: 'Beer & Drinks' },
-  { value: 'DESSERTS', label: 'Desserts' },
 ];
 
 export default function Menu() {
