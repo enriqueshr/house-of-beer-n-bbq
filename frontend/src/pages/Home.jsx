@@ -15,7 +15,7 @@ const HIGHLIGHTS = [
     icon: FaFire,
     title: 'Slow-Smoked BBQ',
     desc: 'Bone-in chicken, dry-rubbed and smoked low and slow until it falls off the bone.',
-    image: '/images/slow-smoked-chicken.webp',
+    image: '/images/slow-smoked-chicken.jpg',
   },
   {
     icon: FaBeer,
