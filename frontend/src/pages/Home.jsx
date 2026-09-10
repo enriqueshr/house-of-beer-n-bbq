@@ -47,7 +47,7 @@ export default function Home() {
           }}
         />
         <div className="relative z-10 mx-auto max-w-5xl px-4 text-center md:px-8">
-          <h1 className="font-brand text-5xl leading-tight tracking-wide [text-shadow:0_4px_24px_rgba(0,0,0,0.65)] sm:text-6xl md:text-7xl lg:text-8xl">
+          <h1 className="-mt-3 font-brand text-5xl leading-tight tracking-wide [text-shadow:0_4px_24px_rgba(0,0,0,0.65)] sm:text-6xl md:-mt-5 md:text-7xl lg:text-8xl">
             <span className="text-shine-emerald">THE HOUSE OF</span>
             <br />
             <span className="text-shine-ember">BEER</span> <span className="text-shine-emerald">N'</span>{' '}
