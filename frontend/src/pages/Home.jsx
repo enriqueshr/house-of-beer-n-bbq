@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaUtensils, FaCalendarAlt, FaShoppingBag, FaBeer, FaFire, FaClock, FaEnvelope } from 'react-icons/fa';
 import SectionHeading from '../components/ui/SectionHeading';
@@ -32,25 +32,38 @@ const HIGHLIGHTS = [
 ];
 
 export default function Home() {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
     <div>
       {/* Hero */}
       <section className="relative flex min-h-[92vh] items-center overflow-hidden bg-charcoal-950">
-        <div className="absolute inset-0 bg-warm-radial" />
+        <div
+          className="absolute inset-x-0 -top-[10%] h-[120%] bg-cover bg-center will-change-transform"
+          style={{
+            backgroundImage: 'url(/images/storefront-hero.jpg)',
+            transform: `translate3d(0, ${scrollY * 0.35}px, 0)`,
+          }}
+        />
         <div
           className="absolute inset-0"
           style={{
             backgroundImage:
-              'linear-gradient(to bottom, rgba(15,13,12,0.55), rgba(15,13,12,0.4) 45%, rgba(15,13,12,0.97)), url(/images/storefront-hero.jpg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+              'linear-gradient(180deg, rgba(15,13,12,0.45) 0%, rgba(15,13,12,0.3) 40%, rgba(15,13,12,0.35) 60%, rgba(15,13,12,0.92) 100%), radial-gradient(ellipse 44% 27% at 50% 40%, rgba(5,4,3,0.97) 0%, rgba(5,4,3,0.95) 58%, transparent 84%)',
           }}
         />
+        <div className="absolute inset-0 bg-warm-radial" />
         <div className="relative z-10 mx-auto max-w-5xl px-4 text-center md:px-8">
-          <h1 className="-mt-3 font-brand text-5xl leading-tight tracking-wide [text-shadow:0_4px_24px_rgba(0,0,0,0.65)] sm:text-6xl md:-mt-5 md:text-7xl lg:text-8xl">
+          <h1 className="font-brand text-5xl leading-[0.95] tracking-wide [text-shadow:0_4px_30px_rgba(0,0,0,0.75)] sm:text-6xl md:text-7xl lg:text-8xl">
             <span className="text-shine-emerald">THE HOUSE OF</span>
             <br />
-            <span className="text-shine-ember">BEER</span> <span className="text-shine-emerald">N'</span>{' '}
+            <span className="text-shine-ember">BEER</span> <span className="text-shine-emerald">N&apos;</span>{' '}
             <span className="text-shine-ember">BBQ</span> <FaBeer className="inline text-ember-400" />
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg text-stone-200 md:text-xl">
